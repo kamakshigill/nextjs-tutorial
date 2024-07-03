@@ -1,35 +1,46 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "target": "esnext", // or "es2017" or higher, as needed
+    "module": "esnext", // or other appropriate module setting like "commonjs"
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ], // or other appropriate libs
+    "allowJs": true, // only if you have JavaScript files to compile
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ]
+    },
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "preserve", // or "react" if using React JSX
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "noEmit": true
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/lib/placeholder-data.ts",
-    "scripts/seed.js"
+    "next-env.d.ts",
+    "types/custom.d.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
